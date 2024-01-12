@@ -13,6 +13,7 @@ jobs:
       - name: compilar la aplicación sin repetir pruebas
         run: mvn package -DskipTests=true
 
+  #cambiar el puerto de la bbdd a 3307 a ver si funcionan los votos
   test:
     needs: build
     runs-on: self-hosted
@@ -27,7 +28,7 @@ jobs:
         run: |
           mysql -u root < db/baloncesto.sql
           export DATABASE_HOST="jdbc:mysql://localhost"
-          export DATABASE_PORT="3306"
+          export DATABASE_PORT="3306" 
           export DATABASE_NAME="baloncesto"
           export DATABASE_USER="usuario"
           export DATABASE_PASS="clave"
