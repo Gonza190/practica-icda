@@ -29,7 +29,7 @@ jobs:
         run: |
           mysql -u root < db/baloncesto.sql
           export DATABASE_HOST="jdbc:mysql://localhost"
-          export DATABASE_PORT="3307" 
+          export DATABASE_PORT="3306" 
           export DATABASE_NAME="baloncesto"
           export DATABASE_USER="usuario"
           export DATABASE_PASS="clave"
@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: calidad-codigo
         run: |
-          mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin1
+          mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin1234
 
   deploy:
     runs-on: ubuntu-latest
