@@ -1,8 +1,6 @@
 import java.sql.*;
 import java.util.logging.Logger;
 
-//import mx4j.log.LoggerBroadcaster;
-
 public class ModeloDatos {
 
     private Connection con;
@@ -10,7 +8,7 @@ public class ModeloDatos {
     private ResultSet rs;
 
     private Logger logger = Logger.getLogger(ModeloDatos.class.getName());
-    private String ERROR_MSG = "El error es: ";
+    private String errorMsg = "El error es: ";
 
     public void abrirConexion() {
 
@@ -30,7 +28,7 @@ public class ModeloDatos {
         } catch (Exception e) {
             // No se ha conectado
             logger.severe("No se ha podido conectar");
-            logger.severe(ERROR_MSG + e.getMessage());
+            logger.severe(errorMsg + e.getMessage());
         }
     }
 
@@ -52,7 +50,7 @@ public class ModeloDatos {
         } catch (Exception e) {
             // No lee de la tabla
             logger.severe("No lee de la tabla");
-            logger.severe(ERROR_MSG + e.getMessage());
+            logger.severe(errorMsg + e.getMessage());
         }
         return (existe);
     }
@@ -66,7 +64,7 @@ public class ModeloDatos {
         } catch (Exception e) {
             // No modifica la tabla
             logger.severe("No modifica la tabla");
-            logger.severe(ERROR_MSG + e.getMessage());
+            logger.severe(errorMsg + e.getMessage());
         }
     }
 
@@ -79,7 +77,7 @@ public class ModeloDatos {
         } catch (Exception e) {
             // No inserta en la tabla
             logger.severe("No inserta en la tabla");
-            logger.severe(ERROR_MSG + e.getMessage());
+            logger.severe(errorMsg + e.getMessage());
         }
     }
 
@@ -91,7 +89,7 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             logger.severe("No se ponen los votos a cero");
-            logger.severe(ERROR_MSG + e.getMessage());
+            logger.severe(errorMsg + e.getMessage());
         }
     }
 
