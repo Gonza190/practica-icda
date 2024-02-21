@@ -14,8 +14,15 @@ public class Acb extends HttpServlet {
 
     public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession s = req.getSession(true);
+
+        if (req.getParameter("cero") != null) {
+            bd.ponerVotosACero();
+            res.sendRedirect("index.html");
+        }
+
         String nombreP = (String) req.getParameter("txtNombre");
         String nombre = (String) req.getParameter("R1");
+
         if (nombre.equals("Otros")) {
             nombre = (String) req.getParameter("txtOtros");
         }
