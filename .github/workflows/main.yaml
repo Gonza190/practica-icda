@@ -15,13 +15,6 @@ jobs:
       - name: base de datos para las pruebas unitarias
         run: |
           mysql -u root < db/baloncesto.sql
-          export DATABASE_HOST="jdbc:mysql://localhost"
-          export DATABASE_PORT="3306" 
-          export DATABASE_NAME="baloncesto"
-          export DATABASE_USER="usuario"
-          export DATABASE_PASS="clave"
-          sh /usr/local/tomcat/bin/catalina.sh stop
-          sh /usr/local/tomcat/bin/catalina.sh start
       - name: pruebas-unitarias
         run: mvn test
       - name: compilar la aplicación sin repetir pruebas

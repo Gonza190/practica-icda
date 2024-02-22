@@ -18,6 +18,12 @@ public class ModeloDatosTest {
     public void testActualizarJugador() {
         System.out.println("Prueba de actualizarJugador");
 
+        System.setProperty("DATABASE_HOST", "jdbc:mysql://localhost");
+        System.setProperty("DATABASE_PORT", "3306");
+        System.setProperty("DATABASE_NAME", "baloncesto");
+        System.setProperty("DATABASE_USER", "usuario");
+        System.setProperty("DATABASE_PASS", "clave");
+
         String nombre = "Rudy";
         ModeloDatos instance = new ModeloDatos();
 
