@@ -8,6 +8,10 @@ jobs:
     steps:
       - name: descargar repostorio
         uses: actions/checkout@v3
+      - name: instalar aplicación en Tomcat para las pruebas
+        run: |
+          mvn package -DskipTests=true
+          cp -r target/Baloncesto /usr/local/tomcat/webapps
       - name: base de datos para las pruebas unitarias
         run: |
           ls -la
