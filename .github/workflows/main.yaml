@@ -8,7 +8,11 @@ jobs:
     steps:
       - name: descargar repostorio
         uses: actions/checkout@v3
-      - name: base de datos para las pruebas unitarias
+      - name: instalar aplicación en Tomcat
+        run: |
+          mvn package -DskipTests=true
+          cp -r target/Baloncesto /usr/local/tomcat/webapps
+      - name: preparar base de datos de prueba
         run: |
           mysql -u root < db/baloncesto.sql
           export DATABASE_HOST="jdbc:mysql://localhost"
