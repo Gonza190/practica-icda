@@ -21,9 +21,13 @@ public class ModeloDatosTest {
         String nombre = "Rudy";
         ModeloDatos instance = new ModeloDatos();
 
+        instance.abrirConexion();
+
         int antesDeActualizar = instance.cuantosVotosJugador(nombre);
         instance.actualizarJugador(nombre);
         int despuesDeActualizar = instance.cuantosVotosJugador(nombre);
+
+        instance.cerrarConexion();
 
         // Son diferentes antes y después de actualizar
         assertNotEquals(antesDeActualizar, despuesDeActualizar);
