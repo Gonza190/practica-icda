@@ -88,9 +88,27 @@ public class ModeloDatos {
             rs.close();
             set.close();
         } catch (Exception e) {
-            logger.severe("No se ponen los votos a cero");
+            logger.severe("No se modiican los votos");
             logger.severe(errorMsg + e.getMessage());
         }
+    }
+
+    public int cuantosVotosJugador(String nombre) {
+        int votos = 0;
+        try {
+            set = con.createStatement();
+            set.executeUpdate("SELECT votos FROM Jugadores WHERE nombre " + " LIKE '%" + nombre + "%'");
+            while (rs.next()) {
+                votos = rs.getInt("votos");
+            }
+            rs.close();
+            set.close();
+        } catch (Exception e) {
+            logger.severe("No se obtienen los votos");
+            logger.severe(errorMsg + e.getMessage());
+        }
+
+        return votos;
     }
 
     public void cerrarConexion() {

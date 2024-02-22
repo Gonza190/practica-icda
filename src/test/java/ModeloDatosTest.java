@@ -13,4 +13,23 @@ public class ModeloDatosTest {
         assertEquals(expResult, result);
         // fail("Fallo forzado.");
     }
+
+    @Test
+    public void testActualizarJugador() {
+        System.out.println("Prueba de actualizarJugador");
+
+        String nombre = "Rudy";
+        ModeloDatos instance = new ModeloDatos();
+
+        int antesDeActualizar = instance.cuantosVotosJugador(nombre);
+        instance.actualizarJugador(nombre);
+        int despuesDeActualizar = instance.cuantosVotosJugador(nombre);
+
+        // Son diferentes antes y después de actualizar
+        assertNotEquals(antesDeActualizar, despuesDeActualizar);
+
+        // Se aumenta en 1 tras actualizar
+        assertEquals(antesDeActualizar + 1, despuesDeActualizar);
+    }
+
 }
