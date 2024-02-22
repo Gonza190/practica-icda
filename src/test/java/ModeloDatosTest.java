@@ -29,9 +29,6 @@ public class ModeloDatosTest {
 
         instance.cerrarConexion();
 
-        // Son diferentes antes y después de actualizar
-        // assertNotEquals(antesDeActualizar, despuesDeActualizar);
-
         // Se aumenta en 1 tras actualizar
         assertEquals(antesDeActualizar + 1, despuesDeActualizar);
     }
