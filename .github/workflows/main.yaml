@@ -9,7 +9,8 @@ jobs:
       - name: descargar repostorio
         uses: actions/checkout@v3
       - name: base de datos para las pruebas unitarias
-        run: mysql -u root < db/baloncesto.sql
+        run: |
+          mysql -u root < db/baloncesto.sql
       - name: pruebas-unitarias
         run: mvn test
       - name: compilar la aplicación sin repetir pruebas
