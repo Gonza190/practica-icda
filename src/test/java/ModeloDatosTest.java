@@ -29,7 +29,6 @@ public class ModeloDatosTest {
         int despuesDeActualizar = instance.cuantosVotosJugador(nombre);
 
         instance.cerrarConexion();
-        // prueba
         // Se aumenta en 1 tras actualizar
         // assertEquals(antesDeActualizar + 1, despuesDeActualizar);
     }
