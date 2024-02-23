@@ -21,6 +21,8 @@ public class ModeloDatos {
             System.setProperty("DATABASE_USER", "usuario");
             System.setProperty("DATABASE_PASS", "clave");
 
+            System.out.println();
+
             // Con variables de entorno
             String dbHost = System.getenv().get("DATABASE_HOST");
             String dbPort = System.getenv().get("DATABASE_PORT");
@@ -103,7 +105,7 @@ public class ModeloDatos {
         int votos = 0;
         try {
             set = con.createStatement();
-            set.executeUpdate("SELECT votos FROM Jugadores WHERE nombre " + " LIKE '%" + nombre + "%'");
+            set.executeQuery("SELECT votos FROM Jugadores WHERE nombre " + " LIKE '%" + nombre + "%'");
             while (rs.next()) {
                 votos = rs.getInt("votos");
             }
