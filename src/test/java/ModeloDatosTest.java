@@ -17,6 +17,12 @@ public class ModeloDatosTest {
     @Test
     public void testActualizarJugador() {
 
+        System.setProperty("DATABASE_HOST", "jdbc:mysql://localhost");
+        System.setProperty("DATABASE_PORT", "3306");
+        System.setProperty("DATABASE_NAME", "baloncesto");
+        System.setProperty("DATABASE_USER", "usuario");
+        System.setProperty("DATABASE_PASS", "clave");
+
         System.out.println("Prueba de actualizarJugador");
 
         String nombre = "Rudy";
