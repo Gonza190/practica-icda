@@ -25,7 +25,7 @@ public class ModeloDatosTest {
 
         System.out.println("Prueba de actualizarJugador");
 
-        String nombre = "Rudy";
+        String nombre = "Llull";
         ModeloDatos instance = new ModeloDatos();
 
         instance.abrirConexion();
