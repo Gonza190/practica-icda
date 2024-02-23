@@ -6,9 +6,10 @@ public class ModeloDatosTest {
     @Test
     public void testExisteJugador() {
         System.out.println("Prueba de existeJugador");
-        String nombre = "";
+        String nombre = "Llull";
         ModeloDatos instance = new ModeloDatos();
-        boolean expResult = false;
+        instance.abrirConexion();
+        boolean expResult = true;
         boolean result = instance.existeJugador(nombre);
         assertEquals(expResult, result);
         // fail("Fallo forzado.");
@@ -32,7 +33,7 @@ public class ModeloDatosTest {
 
         instance.cerrarConexion();
         // Se aumenta en 1 tras actualizar
-        // assertEquals(antesDeActualizar + 1, despuesDeActualizar);
+        assertEquals(antesDeActualizar + 1, despuesDeActualizar);
     }
 
 }
