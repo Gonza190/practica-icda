@@ -15,6 +15,12 @@ public class ModeloDatos {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
+            System.setProperty("DATABASE_HOST", "jdbc:mysql://localhost");
+            System.setProperty("DATABASE_PORT", "3306");
+            System.setProperty("DATABASE_NAME", "baloncesto");
+            System.setProperty("DATABASE_USER", "usuario");
+            System.setProperty("DATABASE_PASS", "clave");
+
             // Con variables de entorno
             String dbHost = System.getenv().get("DATABASE_HOST");
             String dbPort = System.getenv().get("DATABASE_PORT");
