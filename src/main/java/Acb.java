@@ -17,9 +17,10 @@ public class Acb extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession s = req.getSession(true);
 
+        // poner votos a cero
         if (req.getParameter("cero") != null) {
             bd.ponerVotosACero();
-            res.sendRedirect("index.html");
+            res.sendRedirect(res.encodeRedirectURL("index.html"));
             return;
         }
 
