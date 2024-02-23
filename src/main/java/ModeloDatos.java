@@ -15,9 +15,10 @@ public class ModeloDatos {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            System.setProperty("DATABASE_HOST", "jdbc:mysql://localhost");
+            System.setProperty("DATABASE_HOST", "localhost");
             System.setProperty("DATABASE_PORT", "3306");
             System.setProperty("DATABASE_NAME", "baloncesto");
+
             System.setProperty("DATABASE_USER", "usuario");
             System.setProperty("DATABASE_PASS", "clave");
 
@@ -30,7 +31,7 @@ public class ModeloDatos {
             String dbUser = System.getenv().get("DATABASE_USER");
             String dbPass = System.getenv().get("DATABASE_PASS");
 
-            String url = dbHost + ":" + dbPort + "/" + dbName;
+            String url = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName;
             con = DriverManager.getConnection(url, dbUser, dbPass);
 
         } catch (Exception e) {
