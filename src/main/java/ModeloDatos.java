@@ -7,8 +7,8 @@ public class ModeloDatos {
     private Statement set;
     private ResultSet rs;
 
-    private Logger logger = Logger.getLogger(ModeloDatos.class.getName());
-    private String errorMsg = "El error es: ";
+    private static final Logger logger = Logger.getLogger(ModeloDatos.class.getName());
+    private static final String errorMsg = "El error es: ";
 
     public void abrirConexion() {
 
