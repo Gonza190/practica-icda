@@ -25,9 +25,6 @@ public class ModeloDatosTest {
         ModeloDatos instance = new ModeloDatos();
         instance.abrirConexion();
 
-        // boolean result = instance.existeJugador(nombre);
-        // System.out.println(result);
-
         int antesDeActualizar = instance.cuantosVotosJugador(nombre);
         instance.actualizarJugador(nombre);
         int despuesDeActualizar = instance.cuantosVotosJugador(nombre);
