@@ -84,7 +84,7 @@ public class ModeloDatos {
     public void ponerVotosACero() {
         try {
             set = con.createStatement();
-            set.executeQuery("UPDATE Jugadores SET votos=0");
+            set.executeUpdate("UPDATE Jugadores SET votos=0");
             rs.close();
             set.close();
         } catch (Exception e) {
