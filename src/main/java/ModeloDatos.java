@@ -69,8 +69,8 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             // No modifica la tabla
-            logger.severe("No modifica la tabla");
-            logger.severe(errorMsg + e.getMessage());
+            logger.warning("No modifica la tabla");
+            logger.warning(errorMsg + e.getMessage());
         }
     }
 
@@ -103,18 +103,18 @@ public class ModeloDatos {
         int votos = 0;
         try {
             set = con.createStatement();
-            set.executeQuery("SELECT votos FROM Jugadores WHERE nombre " + " LIKE '%" + nombre + "%'");
+            rs = set.executeQuery("SELECT votos FROM Jugadores WHERE nombre " + " LIKE '%" + nombre + "%'");
             while (rs.next()) {
                 votos = rs.getInt("votos");
             }
             rs.close();
             set.close();
         } catch (Exception e) {
-            logger.severe("No se obtienen los votos");
-            logger.severe(errorMsg + e.getMessage());
+            // No lee de la tabla
+            logger.warning("No lee de la tabla");
+            logger.warning(errorMsg + e.getMessage());
         }
-
-        return votos;
+        return (votos);
     }
 
     public void cerrarConexion() {

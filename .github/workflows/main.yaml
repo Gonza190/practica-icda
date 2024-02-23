@@ -11,7 +11,8 @@ jobs:
       - name: preparar base de datos de prueba
         run: |
           mysql -u root < db/baloncesto.sql
-          mvn test
+      - name: pruebas-unitarias
+        run: mvn test
       - name: compilar la aplicación sin repetir pruebas
         run: mvn package -DskipTests=true
 
