@@ -22,6 +22,8 @@ public class ModeloDatosTest {
         String nombre = "Llull";
         ModeloDatos instance = new ModeloDatos();
 
+        System.out.println("La instancia es: " + instance.toString());
+
         instance.abrirConexion();
 
         int antesDeActualizar = instance.cuantosVotosJugador(nombre);
