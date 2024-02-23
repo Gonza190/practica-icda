@@ -20,6 +20,7 @@ public class Acb extends HttpServlet {
         if (req.getParameter("cero") != null) {
             bd.ponerVotosACero();
             res.sendRedirect("index.html");
+            return;
         }
 
         String nombreP = req.getParameter("txtNombre");
