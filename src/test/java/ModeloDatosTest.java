@@ -13,29 +13,27 @@ public class ModeloDatosTest {
         boolean result = instance.existeJugador(nombre);
         System.out.println(result);
         assertEquals(expResult, result);
-        instance.cerrarConexion();
         // fail("Fallo forzado.");
     }
 
-    // @Test
-    // public void testActualizarJugador() {
+    @Test
+    public void testActualizarJugador() {
 
-    // System.out.println("Prueba de actualizarJugador");
+        System.out.println("Prueba de actualizarJugador");
 
-    // String nombre = "Llull";
-    // ModeloDatos instance = new ModeloDatos();
+        String nombre = "Llull";
+        ModeloDatos instance = new ModeloDatos();
+        instance.abrirConexion();
 
-    // System.out.println("La instancia es: " + instance.toString());
+        boolean result = instance.existeJugador(nombre);
+        System.out.println(result);
 
-    // instance.abrirConexion();
+        int antesDeActualizar = instance.cuantosVotosJugador(nombre);
+        instance.actualizarJugador(nombre);
+        int despuesDeActualizar = instance.cuantosVotosJugador(nombre);
 
-    // int antesDeActualizar = instance.cuantosVotosJugador(nombre);
-    // instance.actualizarJugador(nombre);
-    // int despuesDeActualizar = instance.cuantosVotosJugador(nombre);
-
-    // instance.cerrarConexion();
-    // // Se aumenta en 1 tras actualizar
-    // // assertEquals(antesDeActualizar + 1, despuesDeActualizar);
-    // }
+        // Se aumenta en 1 tras actualizar
+        assertEquals(antesDeActualizar + 1, despuesDeActualizar);
+    }
 
 }
