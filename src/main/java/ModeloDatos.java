@@ -1,5 +1,7 @@
 import java.sql.*;
 import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModeloDatos {
 
@@ -115,6 +117,27 @@ public class ModeloDatos {
             logger.severe(errorMsg + e.getMessage());
         }
         return votos;
+    }
+
+    public List<Jugador> obtenerJugadores() {
+
+        List<Jugador> jugadores = new ArrayList();
+        try {
+            set = con.createStatement();
+            rs = set.executeQuery("SELECT * FROM Jugadores");
+            while (rs.next()) {
+                jugadores.add(new Jugador(
+                        rs.getString("nombre"),
+                        rs.getInt("votos")));
+            }
+            rs.close();
+            set.close();
+        } catch (Exception e) {
+            // No lee de la tabla
+            logger.severe("No lee los jugadores");
+            logger.severe(errorMsg + e.getMessage());
+        }
+        return jugadores;
     }
 
     public void cerrarConexion() {

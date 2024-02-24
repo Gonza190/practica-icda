@@ -24,6 +24,13 @@ public class Acb extends HttpServlet {
             return;
         }
 
+        // ir a VerVotos.jsp
+        if (req.getParameter("cero") != null) {
+            bd.ponerVotosACero();
+            res.sendRedirect(res.encodeRedirectURL("index.html"));
+            return;
+        }
+
         String nombreP = req.getParameter("txtNombre");
         String nombre = req.getParameter("R1");
 
