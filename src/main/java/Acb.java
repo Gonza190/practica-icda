@@ -3,6 +3,9 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Acb extends HttpServlet {
 
     private ModeloDatos bd;
@@ -26,6 +29,8 @@ public class Acb extends HttpServlet {
 
         // ir a VerVotos.jsp
         if (req.getParameter("verVotos") != null) {
+            List<Jugador> jugadores = bd.obtenerJugadores();
+            s.setAttribute("jugadores", jugadores);
             res.sendRedirect(res.encodeRedirectURL("VerVotos.jsp"));
             return;
         }
