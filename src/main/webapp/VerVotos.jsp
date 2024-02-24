@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="main.java.ModeloDatos" %>
 <%@ page import="main.java.Jugador" %>
 <%@ page import="java.util.List" %>
@@ -21,12 +20,12 @@
         <th>Jugador</th>
         <th>Votos</th>
       </tr>
-      <c:forEach var="jugador" items="${jugadores}">
+      <% for (Jugador jugador : jugadores) { %>
         <tr>
-          <td>${jugador.nombre}</td>
-          <td>${jugador.votos}</td>
+          <td><%= jugador.getNombre() %></td>
+          <td><%= jugador.getVotos() %></td>
         </tr>
-      </c:forEach>
+      <% } %>
     </table>
 
     <a href="index.html"> Ir al comienzo</a>
