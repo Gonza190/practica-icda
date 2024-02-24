@@ -69,8 +69,8 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             // No modifica la tabla
-            logger.warning("No modifica la tabla");
-            logger.warning(errorMsg + e.getMessage());
+            logger.severe("No modifica la tabla");
+            logger.severe(errorMsg + e.getMessage());
         }
     }
 
@@ -111,10 +111,10 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             // No lee de la tabla
-            logger.warning("No lee de la tabla");
-            logger.warning(errorMsg + e.getMessage());
+            logger.severe("No lee los votos del jugador");
+            logger.severe(errorMsg + e.getMessage());
         }
-        return (votos);
+        return votos;
     }
 
     public void cerrarConexion() {

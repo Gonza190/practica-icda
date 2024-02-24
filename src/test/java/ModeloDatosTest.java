@@ -11,7 +11,7 @@ public class ModeloDatosTest {
         instance.abrirConexion();
         boolean expResult = true;
         boolean result = instance.existeJugador(nombre);
-        System.out.println(result);
+        // System.out.println(result);
         assertEquals(expResult, result);
         // fail("Fallo forzado.");
     }
