@@ -71,7 +71,7 @@ public class ModeloDatos {
             rs.close();
             set.close();
         } catch (Exception e) {
-            // No inserta en la tabla
+            // No inserta
             System.out.println("No inserta en la tabla");
             System.out.println("El error es: " + e.getMessage());
         }
