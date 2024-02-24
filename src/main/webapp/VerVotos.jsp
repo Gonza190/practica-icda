@@ -1,4 +1,3 @@
-<%@ page import="java.util.List, Jugador, ModeloDatos" %>
 <%
     HttpSession s = req.getSession(true);
     jugadores = s.getAttribute("jugadores");
