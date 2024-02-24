@@ -1,7 +1,4 @@
-<%
-    HttpSession s = req.getSession(true);
-    jugadores = s.getAttribute("jugadores");
-%>
+<%@ page import="java.util.List, Jugador, ModeloDatos" %>
 
 <html>
   <head>
@@ -15,7 +12,11 @@
         <th>Jugador</th>
         <th>Votos</th>
       </tr>
-      <% for (jugador : jugadores) { %>
+      <% 
+        ModeloDatos modeloDatos = new ModeloDatos();
+        modeloDatos.abrirConexion();
+        List<Jugador> jugadores = modeloDatos.obtenerJugadores();
+        for (Jugador jugador : jugadores) { %>
         <tr>
           <td><%= jugador.getNombre() %></td>
           <td><%= jugador.getVotos() %></td>
