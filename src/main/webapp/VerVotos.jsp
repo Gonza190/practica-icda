@@ -1,4 +1,4 @@
-<%@ page import="main.java.*" %>
+<%@ page import="main.java.ModeloDatos" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%
