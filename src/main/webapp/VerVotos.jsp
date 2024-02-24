@@ -1,6 +1,4 @@
-<%@ page import="ModeloDatos" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List,main.java.Jugador,main.java.ModeloDatos" %>
 <%
 
     ModeloDatos modeloDatos = new ModeloDatos();
