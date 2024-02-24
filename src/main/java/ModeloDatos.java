@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.logging.Logger;
 
 public class ModeloDatos {
 
@@ -6,25 +7,34 @@ public class ModeloDatos {
     private Statement set;
     private ResultSet rs;
 
+    private static final Logger logger = Logger.getLogger(ModeloDatos.class.getName());
+    private static final String errorMsg = "El error es: ";
+
     public void abrirConexion() {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Con variables de entorno
-            String dbHost = System.getenv().get("DATABASE_HOST");
-            String dbPort = System.getenv().get("DATABASE_PORT");
-            String dbName = System.getenv().get("DATABASE_NAME");
-            String dbUser = System.getenv().get("DATABASE_USER");
-            String dbPass = System.getenv().get("DATABASE_PASS");
+            // String dbHost = System.getenv().get("DATABASE_HOST");
+            // String dbPort = System.getenv().get("DATABASE_PORT");
+            // String dbName = System.getenv().get("DATABASE_NAME");
+            // String dbUser = System.getenv().get("DATABASE_USER");
+            // String dbPass = System.getenv().get("DATABASE_PASS");
+
+            String dbHost = "jdbc:mysql://localhost";
+            String dbPort = "3306";
+            String dbName = "baloncesto";
+            String dbUser = "usuario";
+            String dbPass = "clave";
 
             String url = dbHost + ":" + dbPort + "/" + dbName;
             con = DriverManager.getConnection(url, dbUser, dbPass);
 
         } catch (Exception e) {
             // No se ha conectado
-            System.out.println("No se ha podido conectar");
-            System.out.println("El error es: " + e.getMessage());
+            logger.severe("No se ha podido conectar");
+            logger.severe(errorMsg + e.getMessage());
         }
     }
 
@@ -45,8 +55,8 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             // No lee de la tabla
-            System.out.println("No lee de la tabla");
-            System.out.println("El error es: " + e.getMessage());
+            logger.severe("No lee de la tabla");
+            logger.severe(errorMsg + e.getMessage());
         }
         return (existe);
     }
@@ -59,8 +69,8 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             // No modifica la tabla
-            System.out.println("No modifica la tabla");
-            System.out.println("El error es: " + e.getMessage());
+            logger.severe("No modifica la tabla");
+            logger.severe(errorMsg + e.getMessage());
         }
     }
 
@@ -71,17 +81,47 @@ public class ModeloDatos {
             rs.close();
             set.close();
         } catch (Exception e) {
-            // No inserta
-            System.out.println("No inserta en la tabla");
-            System.out.println("El error es: " + e.getMessage());
+            // No inserta en la tabla
+            logger.severe("No inserta en la tabla");
+            logger.severe(errorMsg + e.getMessage());
         }
+    }
+
+    public void ponerVotosACero() {
+        try {
+            set = con.createStatement();
+            set.executeUpdate("UPDATE Jugadores SET votos=0");
+            rs.close();
+            set.close();
+        } catch (Exception e) {
+            logger.severe("No se modiican los votos");
+            logger.severe(errorMsg + e.getMessage());
+        }
+    }
+
+    public int cuantosVotosJugador(String nombre) {
+        int votos = 0;
+        try {
+            set = con.createStatement();
+            rs = set.executeQuery("SELECT votos FROM Jugadores WHERE nombre " + " LIKE '%" + nombre + "%'");
+            while (rs.next()) {
+                votos = rs.getInt("votos");
+            }
+            rs.close();
+            set.close();
+        } catch (Exception e) {
+            // No lee de la tabla
+            logger.severe("No lee los votos del jugador");
+            logger.severe(errorMsg + e.getMessage());
+        }
+        return votos;
     }
 
     public void cerrarConexion() {
         try {
             con.close();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            logger.severe(e.getMessage());
         }
     }
 

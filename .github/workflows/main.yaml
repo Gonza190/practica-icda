@@ -4,10 +4,13 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: descargar repostorio
         uses: actions/checkout@v3
+      - name: preparar base de datos de prueba
+        run: |
+          mysql -u root < db/baloncesto.sql
       - name: pruebas-unitarias
         run: mvn test
       - name: compilar la aplicación sin repetir pruebas
@@ -46,9 +49,31 @@ jobs:
         run: |
           mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin1234
 
-  deploy:
+  stage:
     runs-on: ubuntu-latest
     needs: qa
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v3
+      - name: Crear el archivo .war
+        run: |
+          mvn package -DskipTests=true
+      - name: Aprobación manual
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ secrets.TOKEN }}
+          approvers: Gonza190
+      - name: Desplegar en Azure
+        uses: Azure/webapps-deploy@v2
+        with:
+          app-name: baloncesto-pre-gonzalo-romero
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PRE_PUBLISH_PROFILE }}
+          package: target/*.war
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: stage
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Descargar repositorio
