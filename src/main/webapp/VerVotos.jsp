@@ -1,4 +1,4 @@
-<%@ page import="java.util.List,main.java.Jugador,main.java.ModeloDatos" %>
+<%@ page import="java.util.List, Jugador, ModeloDatos" %>
 <%
 
     ModeloDatos modeloDatos = new ModeloDatos();
