@@ -1,5 +1,5 @@
-<%@ page import="ModeloDatos" %>
-<%@ page import="Jugador" %>
+<%@ page import="main.java.ModeloDatos" %>
+<%@ page import="main.java.Jugador" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%
