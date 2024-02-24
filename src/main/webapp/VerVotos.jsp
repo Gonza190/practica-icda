@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="baloncesto.ModeloDatos" %>
-<%@ page import="baloncesto.Jugador" %>
+<%@ page import="Jugador" %>
+<%@ page import="ModeloDatos" %>
 
 <html>
   <head>
@@ -11,7 +11,7 @@
     <h1>Votos</h1>
     <table border="1">
       <tr>
-        <th>baloncesto.Jugador</th>
+        <th>Jugador</th>
         <th>Votos</th>
       </tr>
       <% 
