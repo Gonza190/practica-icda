@@ -30,8 +30,9 @@ public class Acb extends HttpServlet {
         // ir a VerVotos.jsp
         if (req.getParameter("verVotos") != null) {
 
-            // obtengo aqui los jugadores ya que no me deja imoprtar ModeloDatos al jsp
-            // los introduzco en la request
+            // al importar cualquier archivo del paquete src/main/java al
+            // JSP da error, por lo que se introducen los jugadores en la request
+
             req.setAttribute("jugadores", bd.obtenerJugadores());
             req.getRequestDispatcher("VerVotos.jsp").forward(req, res);
             return;

@@ -13,7 +13,7 @@ public class ModeloDatos {
     private ResultSet rs;
 
     private static final Logger logger = Logger.getLogger(ModeloDatos.class.getName());
-    private static final String errorMsg = "El error es: ";
+    private static final String ERROR_MSG = "El error es: ";
 
     public void abrirConexion() {
 
@@ -21,6 +21,7 @@ public class ModeloDatos {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Con variables de entorno
+
             // String dbHost = System.getenv().get("DATABASE_HOST");
             // String dbPort = System.getenv().get("DATABASE_PORT");
             // String dbName = System.getenv().get("DATABASE_NAME");
@@ -39,7 +40,7 @@ public class ModeloDatos {
         } catch (Exception e) {
             // No se ha conectado
             logger.severe("No se ha podido conectar");
-            logger.severe(errorMsg + e.getMessage());
+            logger.severe(ERROR_MSG + e.getMessage());
         }
     }
 
@@ -61,7 +62,7 @@ public class ModeloDatos {
         } catch (Exception e) {
             // No lee de la tabla
             logger.severe("No lee de la tabla");
-            logger.severe(errorMsg + e.getMessage());
+            logger.severe(ERROR_MSG + e.getMessage());
         }
         return (existe);
     }
@@ -75,7 +76,7 @@ public class ModeloDatos {
         } catch (Exception e) {
             // No modifica la tabla
             logger.severe("No modifica la tabla");
-            logger.severe(errorMsg + e.getMessage());
+            logger.severe(ERROR_MSG + e.getMessage());
         }
     }
 
@@ -88,7 +89,7 @@ public class ModeloDatos {
         } catch (Exception e) {
             // No inserta en la tabla
             logger.severe("No inserta en la tabla");
-            logger.severe(errorMsg + e.getMessage());
+            logger.severe(ERROR_MSG + e.getMessage());
         }
     }
 
@@ -100,7 +101,7 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             logger.severe("No se modiican los votos");
-            logger.severe(errorMsg + e.getMessage());
+            logger.severe(ERROR_MSG + e.getMessage());
         }
     }
 
@@ -117,7 +118,7 @@ public class ModeloDatos {
         } catch (Exception e) {
             // No lee de la tabla
             logger.severe("No lee los votos del jugador");
-            logger.severe(errorMsg + e.getMessage());
+            logger.severe(ERROR_MSG + e.getMessage());
         }
         return votos;
     }
@@ -138,7 +139,7 @@ public class ModeloDatos {
         } catch (Exception e) {
             // No lee de la tabla
             logger.severe("No lee los jugadores");
-            logger.severe(errorMsg + e.getMessage());
+            logger.severe(ERROR_MSG + e.getMessage());
         }
         return jugadores;
     }

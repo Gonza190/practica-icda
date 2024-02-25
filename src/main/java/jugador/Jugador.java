@@ -1,5 +1,9 @@
 package jugador;
 
+//Se ha creado un paquete para esta única clase debido a 
+//que al tratar de importar esta clase desde src/main/java
+//donde están las demás clases .java, el JSP no compila
+
 public class Jugador {
 
     private String nombre;
