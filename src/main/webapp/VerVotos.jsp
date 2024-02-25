@@ -9,14 +9,6 @@
     <link href="estilos.css" rel="stylesheet" type="text/css" />
   </head>
   <body class="resultado">
-
-  <%-- JavaScript para imprimir en la consola --%>
-    <script type="text/javascript">
-        console.log(jugadores);
-    </script>
-
-
-
     <h1>Votos</h1>
     <table border="1">
       <tr>

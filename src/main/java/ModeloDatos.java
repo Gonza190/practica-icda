@@ -122,9 +122,8 @@ public class ModeloDatos {
         return votos;
     }
 
-    public List<Jugador> obtenerJugadores() {
-
-        List<Jugador> jugadores = new ArrayList();
+    public List<Jugador> obtenerJugadores() throws SQLException {
+        List<Jugador> jugadores = new ArrayList<>();
         try {
             set = con.createStatement();
             rs = set.executeQuery("SELECT * FROM Jugadores");
@@ -133,12 +132,13 @@ public class ModeloDatos {
                         rs.getString("nombre"),
                         rs.getInt("votos")));
             }
-            rs.close();
-            set.close();
-        } catch (Exception e) {
-            // No lee de la tabla
-            logger.severe("No lee los jugadores");
-            logger.severe(errorMsg + e.getMessage());
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (set != null) {
+                set.close();
+            }
         }
         return jugadores;
     }
