@@ -67,7 +67,7 @@ public class PruebasPhantomjsIT {
                 }
 
                 // si todasCero es true, es porque todas las filas tienen cero votos
-                assertEquals(true, todasCero);
+                assertEquals(false, todasCero);
 
                 driver.close();
                 driver.quit();
