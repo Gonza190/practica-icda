@@ -33,6 +33,7 @@ public class Acb extends HttpServlet {
             // obtengo aqui los jugadores porque me da error
             // importar clases desde el paquete base
             req.setAttribute("jugadores", bd.obtenerJugadores());
+            System.out.println(req.getAttribute("jugadores"));
             res.sendRedirect(res.encodeRedirectURL("VerVotos.jsp"));
             return;
         }
