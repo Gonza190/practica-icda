@@ -15,7 +15,7 @@ List<Jugador> jugadores = (List<Jugador>) request.getAttribute("jugadores");
   <body class="resultado">
     <h1>Votos de los jugadores de la liga ACB</h1>
     <table border="1" >
-    <caption>Tabla con jugadores de la liga ACB con sus votos</caption>
+    <caption>Tabla de votos</caption>
       <tr>
         <th>Jugador</th>
         <th>Votos</th>
