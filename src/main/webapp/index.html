@@ -30,15 +30,28 @@ Author : Roberto Barchino (aplicacion original)
 
       <br />
       <p>
-        <input type="radio" name="R1" value="Otros" />Otro
-        <input type="text" size="20" name="txtOtros" />
+        <input type="radio" name="R1" value="Otros" id="select-otro" />Otro
+        <input type="text" size="20" name="txtOtros" id="text-otro" />
       </p>
       <p>
-        <input type="submit" name="B1" value="Votar" />
+        <input type="submit" id="votar" name="B1" value="Votar" />
         <input type="reset" name="B2" value="Reset" />
       </p>
       <p>
-        <input type="submit" name="cero" value="Poner votos a cero" />
+        <input
+          type="submit"
+          name="cero"
+          id="cero-btn"
+          value="Poner votos a cero"
+        />
+      </p>
+      <p>
+        <input
+          type="submit"
+          name="verVotos"
+          id="ver-votos-btn"
+          value="Ver votos"
+        />
       </p>
     </form>
   </body>

@@ -3,6 +3,9 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Acb extends HttpServlet {
 
     private ModeloDatos bd;
@@ -21,6 +24,17 @@ public class Acb extends HttpServlet {
         if (req.getParameter("cero") != null) {
             bd.ponerVotosACero();
             res.sendRedirect(res.encodeRedirectURL("index.html"));
+            return;
+        }
+
+        // ir a VerVotos.jsp
+        if (req.getParameter("verVotos") != null) {
+
+            // al importar cualquier archivo del paquete src/main/java al
+            // JSP da error, por lo que se introducen los jugadores en la request
+
+            req.setAttribute("jugadores", bd.obtenerJugadores());
+            req.getRequestDispatcher("VerVotos.jsp").forward(req, res);
             return;
         }
 
