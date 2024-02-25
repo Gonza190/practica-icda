@@ -75,6 +75,10 @@ public class PruebasPhantomjsIT {
 
         @Test
         public void otroJugadorTest() {
+
+                // PF-B: votar con otro jugador y ver que en la tabla de votos aparece un voto
+                System.out.println("PF-B: votar con otro jugador y ver que en la tabla de votos aparece un voto");
+
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setJavascriptEnabled(true);
                 caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "/usr/bin/phantomjs");
@@ -105,8 +109,8 @@ public class PruebasPhantomjsIT {
                 // se busca cada fila y se introduce en una lista
                 List<WebElement> filas = tabla.findElements(By.tagName("tr"));
 
-                boolean votado = false;
                 // buscamos solo la columna 4 porque se inserta al final de la tabla
+                boolean votado = false;
                 List<WebElement> columna = filas.get(4).findElements(By.tagName("td"));
 
                 // si el jugador se inserta y en la columna de votos
@@ -114,6 +118,10 @@ public class PruebasPhantomjsIT {
                 if (columna.get(1).getText().equals("1")) {
                         votado = true;
                 }
+
+                // Prints para ver desde workflow si se inserta bien la informacion
+                System.out.println("JUGADOR: " + columna.get(1).getText());
+                System.out.println("VOTOS: " + columna.get(0).getText());
 
                 // si todasCero es true, es porque se ha introducido correctamente
                 assertEquals(true, votado);
