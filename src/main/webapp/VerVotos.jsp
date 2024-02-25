@@ -1,4 +1,6 @@
-<%@ page import="java.util.List,main.java.Jugador" %>
+<%@ page import="java.util.List" %>
+<%@ page import="jugador.Jugador" %>
+
 
 <html>
   <head>

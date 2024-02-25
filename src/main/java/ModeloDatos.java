@@ -1,5 +1,8 @@
 import java.sql.*;
 import java.util.logging.Logger;
+
+import jugador.Jugador;
+
 import java.util.ArrayList;
 import java.util.List;
 

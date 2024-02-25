@@ -1,9 +1,11 @@
+package jugador;
+
 public class Jugador {
 
     private String nombre;
     private int votos;
 
-    Jugador(String nombre, int votos) {
+    public Jugador(String nombre, int votos) {
         this.nombre = nombre;
         this.votos = votos;
     }
