@@ -1,6 +1,4 @@
-<%@ page import="java.util.List" %>
-<%@ page import="Jugador" %>
-<%@ page import="ModeloDatos" %>
+<%@ page import="java.util.List,main.java.Jugador" %>
 
 <html>
   <head>
@@ -15,9 +13,7 @@
         <th>Votos</th>
       </tr>
       <% 
-        ModeloDatos modeloDatos = new ModeloDatos();
-        modeloDatos.abrirConexion();
-        List<Jugador> jugadores = modeloDatos.obtenerJugadores();
+        List<Jugador> jugadores = (List<Jugador>) request.getAttribute("jugadores");
         for (Jugador jugador : jugadores) { %>
         <tr>
           <td><%= jugador.getNombre() %></td>

@@ -29,7 +29,8 @@ public class Acb extends HttpServlet {
 
         // ir a VerVotos.jsp
         if (req.getParameter("verVotos") != null) {
-            res.sendRedirect(res.encodeRedirectURL("VerVotos.jsp"));
+            req.setAttribute("jugadores", bd.obtenerJugadores());
+            req.getRequestDispatcher("VerVotos.jsp").forward(req, res);
             return;
         }
 
