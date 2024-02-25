@@ -82,9 +82,42 @@ public class PruebasPhantomjsIT {
                                 new String[] { "--web-security=no", "--ignore-ssl-errors=yes" });
                 driver = new PhantomJSDriver(caps);
                 driver.navigate().to("http://localhost:8080/Baloncesto/");
-                assertEquals("Votacion mejor jugador liga ACB", driver.getTitle(),
-                                "El titulo no es correcto");
-                System.out.println(driver.getTitle());
+
+                // nombre del jugador con el que probaremos
+                String nombre = "Gasol";
+
+                // se busca el select y el campo de texto para rellenarlos
+                driver.findElement(By.id("select-otro")).click();
+                driver.findElement(By.id("text-otro")).sendKeys(nombre);
+
+                // se pulsa en el boton "Votar"
+                driver.findElement(By.id("votar")).click();
+
+                // se vuelve al index
+                driver.navigate().to("http://localhost:8080/Baloncesto/");
+
+                // se pulsa en el boton "Ver votos"
+                driver.findElement(By.id("ver-votos-btn")).click();
+
+                // se busca la tabla
+                WebElement tabla = driver.findElement(By.tagName("table"));
+
+                // se busca cada fila y se introduce en una lista
+                List<WebElement> filas = tabla.findElements(By.tagName("tr"));
+
+                boolean votado = false;
+                // buscamos solo la columna 4 porque se inserta al final de la tabla
+                List<WebElement> columna = filas.get(4).findElements(By.tagName("td"));
+
+                // si el jugador se inserta y en la columna de votos
+                // tiene un 1 es porque funciona
+                if (columna.get(1).getText().equals("1")) {
+                        votado = true;
+                }
+
+                // si todasCero es true, es porque se ha introducido correctamente
+                assertEquals(true, votado);
+
                 driver.close();
                 driver.quit();
         }
