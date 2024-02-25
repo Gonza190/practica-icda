@@ -33,7 +33,7 @@ public class PruebasPhantomjsIT {
         public void ponerVotosACeroTest() {
 
                 // PF-A: poner votos a cero y luego comprobar que están a cero en la tabla
-
+                System.out.println("PF-A: poner votos a cero y luego comprobar que están a cero en la tabla");
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setJavascriptEnabled(true);
                 caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "/usr/bin/phantomjs");
