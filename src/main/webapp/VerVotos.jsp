@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="jugador.Jugador" %>
 
+<%         List<Jugador> jugadores = (List<Jugador>) request.getAttribute("jugadores"); %>
 
 <html>
   <head>
@@ -8,6 +9,14 @@
     <link href="estilos.css" rel="stylesheet" type="text/css" />
   </head>
   <body class="resultado">
+
+  <%-- JavaScript para imprimir en la consola --%>
+    <script type="text/javascript">
+        console.log(jugadores);
+    </script>
+
+
+
     <h1>Votos</h1>
     <table border="1">
       <tr>
@@ -15,7 +24,6 @@
         <th>Votos</th>
       </tr>
       <% 
-        List<Jugador> jugadores = (List<Jugador>) request.getAttribute("jugadores");
         for (Jugador jugador : jugadores) { %>
         <tr>
           <td><%= jugador.getNombre() %></td>
