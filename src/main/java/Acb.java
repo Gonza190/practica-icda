@@ -31,7 +31,6 @@ public class Acb extends HttpServlet {
         if (req.getParameter("verVotos") != null) {
             req.setAttribute("jugadores", bd.obtenerJugadores());
             req.getRequestDispatcher("VerVotos.jsp").forward(req, res);
-            return;
         }
 
         String nombreP = req.getParameter("txtNombre");
