@@ -115,13 +115,14 @@ public class PruebasPhantomjsIT {
 
                 // si el jugador se inserta y en la columna de votos
                 // tiene un 1 es porque funciona
-                if (columna.get(1).getText().equals("1")) {
+                if (columna.get(1).getText().equals("1") &&
+                                columna.get(0).getText().equals(nombre)) {
                         votado = true;
                 }
 
                 // Prints para ver desde workflow si se inserta bien la informacion
-                System.out.println("JUGADOR: " + columna.get(1).getText());
-                System.out.println("VOTOS: " + columna.get(0).getText());
+                System.out.println("JUGADOR: " + columna.get(0).getText());
+                System.out.println("VOTOS: " + columna.get(1).getText());
 
                 // si todasCero es true, es porque se ha introducido correctamente
                 assertEquals(true, votado);
