@@ -116,7 +116,7 @@ public class PruebasPhantomjsIT {
                 // si el jugador se inserta y en la columna de votos
                 // tiene un 1 es porque funciona
                 if (columna.get(1).getText().equals("1") &&
-                                columna.get(0).getText().equals(nombre)) {
+                                columna.get(0).getText().equals("Fallo")) {
                         votado = true;
                 }
 
@@ -124,7 +124,7 @@ public class PruebasPhantomjsIT {
                 System.out.println("JUGADOR: " + columna.get(0).getText());
                 System.out.println("VOTOS: " + columna.get(1).getText());
 
-                // si todasCero es true, es porque se ha introducido correctamente
+                // si votado es true, es porque se ha introducido correctamente
                 assertEquals(true, votado);
 
                 driver.close();
